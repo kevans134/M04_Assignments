@@ -1,0 +1,21 @@
+import csv
+import sqlite3
+import sqlalchemy
+import pandas as pd
+
+
+text =['author,book'],['J R R Tolkien'],['The Hobbit'],['Lynne Truss'],["Eats, Shoots & Leaves"]
+
+conn =sqlite3.connect('book.db)
+curs = conn.cursor()
+curs.execute('''CREATE TABLE books
+    (title VARCHAR(20) PRIMARY KEY,
+     author TEXT NOT NULL,
+     year INT)''')
+
+data=sqlalchemy.create_engine('sqlite:////path/books.db') 
+
+
+df=pd.read_sql('select title from book',data)
+
+print(df)
